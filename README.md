@@ -5,7 +5,7 @@ This package is developed to investigate the association between zero-inflated l
 
 Installation of JointMM in R:
 
-library("devtools");
-install_github("JiyuanHu/JointMM");
+> library("devtools");
+> install_github("JiyuanHu/JointMM");
 
-Reference: Hu J, Wang C, Blaser M, Li H (2020). Joint modeling of zero-inflated longitudinal proportions and time-to-event data with application to a gut microbiome study. (Submitted)
+Reference: **Hu J, Wang C, Blaser M, Li H (2020). Joint modeling of zero-inflated longitudinal proportions and time-to-event data with application to a gut microbiome study. (Submitted)**
