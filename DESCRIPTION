@@ -1,0 +1,14 @@
+Package: JointMM
+Type: Package
+Title: A joint modeling tool for analyzing zero-inflated longitudinal proportions and time-to-event data
+Version: 1.0
+Date: 2020-08-21
+Author: Jiyuan Hu
+Maintainer: Jiyuan Hu <jiyuan.hu@nyulangone.org>
+Description: This package is developed to investigate the association between zero-inflated longitudinal proportions and time to an event,e.g., disease onset. It is in particular applicable to microbiome proportion data from prospective studies,  specifically designed to handle the zero-inflated and highly skewed longitudinal microbial proportion data to examine whether the temporal pattern of microbial presence and/or the non-zero microbial proportions are associated with differences in the time to an event. 
+Depends: magic, dplyr, statmod 
+License: GPL (>= 2)
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/JiyuanHu/JointMM
+BugReports: http://github.com/JiyuanHu/JointMM/issues
