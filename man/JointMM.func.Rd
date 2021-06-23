@@ -7,9 +7,9 @@ The main function of the joint modeling tool.
 }
 \usage{
 #joint modeling of longitudinal and survival data
-JointMM.func(data, cov.name.long, cov.name.surv, threshold.zero.prop = 0.1, is.longi.model.only = FALSE, quad.n = 10)
+JointMM.func(data, cov.name.long, cov.name.surv, threshold.zero.prop = 0.1, is.longi.model.only = FALSE, cross.part.corr.eval = FALSE, quad.n = 10)
 #modeling of longitudinal data only
-JointMM.func(data, cov.name.long, cov.name.surv, threshold.zero.prop = 0.1, is.longi.model.only = TRUE, quad.n = 10)
+JointMM.func(data, cov.name.long, cov.name.surv, threshold.zero.prop = 0.1, is.longi.model.only = TRUE, cross.part.corr.eval = FALSE,quad.n = 10)
 }
 
 \arguments{
@@ -28,6 +28,9 @@ The threshold of zero proportions to indicate whether to fit the reduced model o
   \item{is.longi.model.only}{
 An indicator of whether only the longitudinal sub-model of JointMM is used. `is.longi.model.only`= TRUE if only longitudinal data is available
 }
+  \item{cross.part.corr.eval}{
+An indicator of whether the cross-part correlation is evaluated for the longitudinal sub-model of JointMM. We do not recommend assessing the cross-part correlation for conducting microbiome-wide association screening and therefore the default value is set as FALSE. 
+}
   \item{quad.n}{
 The number of points used for numerical integration under the Gauss-Hermite rule. `quad.n` = 10 is set by default in the package
 }
@@ -42,10 +45,11 @@ The number of points used for numerical integration under the Gauss-Hermite rule
   \item{status.Wald}{An indicator of whether the optimization converges (= 0 if converges)}
   \item{Wald.Ts.Longonly}{A matrix containing the Wald statistics for the testing of the longitudinal sub-model only, to examine whether the covariate is associated with the temporal presence(2nd row), or temporal non-zero proportions (3rd row), or either of the two for each covariate (1st row). Each column represents the results for one covariate. The matrix will reduce to one row for testing of the non-zero proportions if reduced model is fitted (i.e., if the zero proportion is lower than the threshold)}
   \item{pvals.Wald.Longonly}{A matrix containing the corresponding p-values of the Wald statistics from the longitudinal sub-model only}
-
+  \item{Wald.cross.part.corr}{The Wald statistics for the testing of cross-part correlation in the longitudinal sub-model.}
+  \item{pvals.Wald.Longonly}{The corresponding p-value of the Wald statistics for the testing of cross-part correlation in the longitudinal sub-model.}
 }
 \references{
-Hu J, Wang C, Blaser M, Li H (2020). Joint modeling of zero-inflated longitudinal proportions and time-to-event data with application to a gut microbiome study. (Submitted)
+Hu J, Wang C, Blaser M, Li H (2021). Joint modeling of zero-inflated longitudinal proportions and time-to-event data with application to a gut microbiome study. Biometrics(Accepted).
 }
 \author{
 Jiyuan Hu
@@ -76,6 +80,11 @@ res4 = JointMM.func(data=dat,cov.name.long=c('obstime','treatment'),cov.name.sur
 
 #names(res2) and names(res4) 
 #c("par.est.Longonly","SEs","est.hessian","Wald.Ts.Longonly","pvals.Wald.Longonly","status.Wald.Longonly")
+
+#5. Evaluate the cross-part correlation in the longitudinal sub-model
+res5 = JointMM.func(data=dat,cov.name.long=c('obstime','treatment'),cov.name.surv='treatment',
+                    threshold.zero.prop = 0.1,is.longi.model.only = TRUE, cross.part.corr.eval = TRUE,quad.n=10) 
+
 }
 \keyword{ joint modeling }
 \keyword{ microbiome }

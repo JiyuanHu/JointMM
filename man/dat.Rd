@@ -27,7 +27,7 @@ This demo dataset illustrates how to organize the longitudinal and survival data
 }
 
 \references{
-Hu J, Wang C, Blaser M, Li H (2020). Joint modeling of zero-inflated longitudinal proportions and time-to-event data with application to a gut microbiome study. (Submitted)
+Hu J, Wang C, Blaser M, Li H (2021). Joint modeling of zero-inflated longitudinal proportions and time-to-event data with application to a gut microbiome study. Biometrics(Accepted).
 }
 \examples{
 data(dat)

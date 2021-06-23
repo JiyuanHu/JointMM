@@ -22,7 +22,7 @@ Jiyuan Hu
 Maintainer: Jiyuan Hu\packageMaintainer{JointMM}
 }
 \references{
-Hu J, Wang C, Blaser M, Li H (2020). Joint modeling of zero-inflated longitudinal proportions and time-to-event data with application to a gut microbiome study. (Submitted)
+Hu J, Wang C, Blaser M, Li H (2021). Joint modeling of zero-inflated longitudinal proportions and time-to-event data with application to a gut microbiome study. Biometrics(Accepted).
 }
 \keyword{ joint modeling, microbiome, zero inflation, skewness }
 \examples{
@@ -50,4 +50,9 @@ res4 = JointMM.func(data=dat,cov.name.long=c('obstime','treatment'),cov.name.sur
 
 #names(res2) and names(res4) 
 #c("par.est.Longonly","SEs","est.hessian","Wald.Ts.Longonly","pvals.Wald.Longonly","status.Wald.Longonly")
+
+#5. Evaluate the cross-part correlation in the longitudinal sub-model
+res5 = JointMM.func(data=dat,cov.name.long=c('obstime','treatment'),cov.name.surv='treatment',
+                    threshold.zero.prop = 0.1,is.longi.model.only = TRUE, cross.part.corr.eval = TRUE,quad.n=10) 
+
 }
