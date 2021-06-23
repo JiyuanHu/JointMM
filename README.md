@@ -11,6 +11,7 @@ Installation of JointMM in R:
 Example code:
 
 > require(JointMM)
+
 > data(dat) #load in the long format of longitudinal and survival data
 
 > zero.prop = mean(dat$Y==0)  
@@ -41,6 +42,7 @@ Example code:
 > #c("par.est.Longonly","SEs","est.hessian","Wald.Ts.Longonly","pvals.Wald.Longonly","status.Wald.Longonly")
 
 > #5. Evaluate the cross-part correlation in the longitudinal sub-model
+
 > res5 = JointMM.func(data=dat,cov.name.long=c('obstime','treatment'),cov.name.surv='treatment',
                     threshold.zero.prop = 0.1,is.longi.model.only = TRUE, cross.part.corr.eval = TRUE,quad.n=10) 
 
