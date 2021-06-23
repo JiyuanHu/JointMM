@@ -64,15 +64,15 @@ function(d,quad.n){
   pvals.Longonly = rbind(pval.all.Longonly,pval.presence.Longonly,pval.proportion.Longonly)
   colnames(Wald.Ts.Longonly) = colnames(pvals.Longonly) = colnames(X)
 
-  d$par.est.Wald = est.H1
+  d$par.est.Longonly = est.H1
   d$SEs = SEs
-  names(d$par.est.Wald) = names(d$SEs)= c(c('se1',paste0('alpha',1:(ncol(X)+1))),
+  names(d$par.est.Longonly) = names(d$SEs)= c(c('se1',paste0('alpha',1:(ncol(X)+1))),
                                           c(paste0('beta',2:(ncol(X)+1)),'se2','phi','q','beta1'))
   d$est.hessian = est.hessian
   d$I.inverse = I.inverse
   d$Wald.Ts.Longonly = Wald.Ts.Longonly
   d$pvals.Wald.Longonly = pvals.Longonly
-  d$status.Wald = status
+  d$status.Wald.Longonly = status
   
   return(d)
 }

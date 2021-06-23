@@ -49,13 +49,13 @@ function(d,quad.n){
  
  names(Wald.proportion.Longonly) = names(pval.proportion.Longonly) = colnames(X)
 
-  d$par.est.Wald = est.H1
+  d$par.est.Longonly = est.H1
   d$SEs = SEs
   d$est.hessian = hes2
   d$I.inverse = I.inverse
 
   d$Wald.Ts.Longonly = Wald.proportion.Longonly
   d$pvals.Wald.Longonly = pval.proportion.Longonly
-  d$status.Wald = status
+  d$status.Wald.Longonly = status
   return(d)
 }

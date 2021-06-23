@@ -141,9 +141,9 @@ function(d,quad.n=quad.n){
   names(d$par.est.Wald) = names(d$SEs) = c('se1',paste0('alpha',1:ncol(X.aug)),
                           paste0('beta',2:ncol(X.aug)),'se2','phi','q','beta1',
                           'shapeK','scaleB','gamma','delta1','delta2')
-  d$Wald.Ts = c(Wald.all = Wald.all,Wald.delta1 = Wald.presence.absence,Wald.delta2 = Wald.abundance)
-  d$pvals.Wald = c(pval.Wald.all = pval.Wald.all,pval.Wald.delta1 = pval.Wald.presence.absence,
-                   pval.Wald.delta2 = pval.Wald.abundance)
+  d$Wald.Ts = c(Wald.all = Wald.all,Wald.presence.absence = Wald.presence.absence,Wald.abundance = Wald.abundance)
+  d$pvals.Wald = c(pval.Wald.all = pval.Wald.all,pval.Wald.presence.absence = pval.Wald.presence.absence,
+                   pval.Wald.abundance=pval.Wald.abundance)
   
   d$status.Wald = status.H1
   return(d)

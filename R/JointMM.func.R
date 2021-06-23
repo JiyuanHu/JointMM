@@ -1,5 +1,5 @@
 JointMM.func <-
-function(data,cov.name.long,cov.name.surv,threshold.zero.prop = 0.1,is.longi.model.only = FALSE, quad.n=10){
+function(data,cov.name.long,cov.name.surv,threshold.zero.prop = 0.1,is.longi.model.only = FALSE, cross.part.corr.eval=FALSE, quad.n=10){
 	if(!is.data.frame(data)){
 		print("please organize `data` in a data frame")
 		return (1)
@@ -52,7 +52,11 @@ function(data,cov.name.long,cov.name.surv,threshold.zero.prop = 0.1,is.longi.mod
 		if(!is.longi.model.only){
 			d = fit.JointMM.fullmodel (d,quad.n=quad.n)
 		}else{
+			if(cross.part.corr.eval){
+			d = fit.JointMM.fullmodel.longitudinal.part.cross.part.corr(d,quad.n=quad.n)
+			}else{
 			d = fit.JointMM.fullmodel.longitudinal.part(d,quad.n=quad.n)
+			}
 		}
    }else{
 		n.zero.prop = sum(d$Y==0)
@@ -68,7 +72,11 @@ function(data,cov.name.long,cov.name.surv,threshold.zero.prop = 0.1,is.longi.mod
   if(!is.longi.model.only){
 	res = d[c("par.est.Wald","SEs","est.hessian","Wald.Ts","pvals.Wald","status.Wald")]  
   }else{
-	res = d[c("par.est.Wald","SEs","est.hessian","Wald.Ts.Longonly","pvals.Wald.Longonly","status.Wald")]
+  if(cross.part.corr.eval){
+	res = d[c("par.est.Longonly","SEs","est.hessian","Wald.Ts.Longonly","pvals.Wald.Longonly","status.Wald.Longonly","Wald.cross.part.corr","pval.cross.part.corr")]
+  }else{
+	res = d[c("par.est.Longonly","SEs","est.hessian","Wald.Ts.Longonly","pvals.Wald.Longonly","status.Wald.Longonly")]
+  }
   }
   
   return(res)

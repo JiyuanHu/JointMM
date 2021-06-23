@@ -75,8 +75,8 @@ function(d,quad.n){
   d$SEs = SEs
   d$est.hessian = est.hessian
   d$I.inverse = I.inverse
-  d$Wald.Ts = c(Wald.delta2 = Wald.abundance)
-  d$pvals.Wald = c(pval.Wald.delta1=pval.Wald.abundance)
+  d$Wald.Ts = c(Wald.abundance = Wald.abundance)
+  d$pvals.Wald = c(pval.Wald.abundance=pval.Wald.abundance)
   d$status.Wald = status
   return(d)
 }
